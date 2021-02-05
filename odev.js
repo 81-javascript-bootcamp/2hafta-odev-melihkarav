@@ -4,17 +4,22 @@
 
 **/
 
-var car = { 
-    registrationNumber: "GA12345",
-    brand: "Toyota",
+var car = {
+  registrationNumber: "GA12345",
+  brand: "Toyota",
 
-    displayDetails: function(){
-        console.log(this.registrationNumber + " " + this.brand);
-    }
+  displayDetails: function () {
+    console.log(this.registrationNumber + " " + this.brand);
+  }
 }
 
-var myCarDetails =  car.displayDetails;
+/** Bu soru call,apply,bind ve arrow fonksiyonları kullanılarak ayrı ayrı çözülebilmekte ben arrow yöntemini kullanarak çözmek istedim. **/
+
+var myCarDetails = () => car.displayDetails();
 myCarDetails();
+
+
+
 
 
 /** 
@@ -28,9 +33,20 @@ bosluk icerebilir, ancak bosluk haridcindeki isimler en az 2 karakterden olusmal
 **/
 
 function isValidName(name) {
-  /// your code here
+  name = name.trim(); // gelen stirngin başındaki ve sonundaki boşlukları siliyoruz
+  if (typeof name === 'string' || name instanceof String) // 1.koşul - name string olmalı
+    {
+      if (name !== "") // 2.koşul - name boş olmamalı
+      { 
+        //3. koşul - boşluk dışındaki isimler en az iki harfli olmalı
+        if(name.split(/\s+/).every((index) => index.length >= 2)) 
+          return true;
+      }  	
+      return false; 
+    }
+else
+  return false
 }
-
 
 
 /**
@@ -51,6 +67,9 @@ function summary(genre, year) {
   )
 }
 
+/**
+Bu soru call,apply ve bind fonksiyonlarını kullanarak ayrı ayrı çözülebilmekte ben call yöntemini kullanarak çözmek istedim. 
+**/
 
-
+summary.call(book,'dystopian','1932');
 
